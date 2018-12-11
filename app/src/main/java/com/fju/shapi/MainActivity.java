@@ -20,9 +20,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private static final int RC_LOGIN = 7800;
-    boolean lllogin = false;
+ //   private static final int RC_LOGIN = 7800;
+ //   boolean lllogin = false;
     List products = DummyData.getProducts();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(new ProductAdapter());
     }
-    public void login(View view){
-       Intent login = new Intent(this,LoginActivity.class);
-   startActivity(login);
+
+    public void setLogin() {
+
+    }
+
+    public void setLogout(){
+        
+    }
+
+    public void login(View view) {
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
 //        if (!lllogin) {
 //            Intent intent = new Intent(this, LoginActivity.class);
 //            startActivityForResult(intent, RC_LOGIN);
@@ -42,12 +52,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
+    class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         @NonNull
         @Override
         public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.product_row,parent,false);
+            View view = getLayoutInflater().inflate(R.layout.product_row, parent, false);
             return new ProductViewHolder(view);
         }
 
@@ -63,9 +72,10 @@ public class MainActivity extends AppCompatActivity {
             return products.size();
         }
 
-        class ProductViewHolder extends RecyclerView.ViewHolder{
+        class ProductViewHolder extends RecyclerView.ViewHolder {
             TextView productName;
             ImageView productImage;
+
             public ProductViewHolder(View itemView) {
                 super(itemView);
                 productName = itemView.findViewById(R.id.tv_product);
